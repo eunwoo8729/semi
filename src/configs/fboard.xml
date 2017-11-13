@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+
+<struts>
+	<package name="fboard" extends="struts-default, tiles-default">
+		
+		<action name="fboardList" class="fboard.fboardListAction" method="execute">
+			<result type="tiles">fboardList</result>
+		</action>
+
+		<!-- 게시판 글쓰기 액션 -->
+		<action name="fboardWriteForm" class="fboard.fboardWriteAction" method="form">
+			<result type="tiles">fboardWriteForm</result>
+		</action>
+		
+		<action name="fboardWriteAction" class="fboard.fboardWriteAction">
+			<result type="redirect-action">
+				<param name="actionName">fboardList</param>
+			</result>
+		</action>
+		
+		<!-- 게시판 글 상세보기 액션 -->
+		<action name="fboardDetail" class="fboard.fboardDetailAction">
+			<result type="tiles">fboardDetail</result>
+		</action>
+		
+		
+		<!-- 게시판 수정 액션 -->
+		<action name="fboardModify" class="fboard.fboardDetailAction">
+			<result type="chain">fboardModifyForm</result>
+		</action>
+		
+		<action name="fboardModifyForm" class="fboard.fboardModifyAction" method="form">
+			<result type="tiles">fboardModifyForm</result>
+		</action>
+		
+		<action name="fboardModifyAction" class="fboard.fboardModifyAction">
+			<result type="redirect-action">
+				<param name="actionName">fboardList</param>
+			</result>
+		</action>
+		
+		<!-- 게시판 삭제 액션 -->
+		<action name="fboardDelete" class="fboard.fboardDeleteAction">
+			<result type="redirect-action">
+				<param name="actionName">fboardList</param>
+				</result>
+		</action>
+	
+	</package>
+		
+	
+		<!-- 게시판 답변글쓰기 액션 -->
+<!-- 		<action name="boardReplyForm" class="board." method="reply">
+			<result type="chain">boardWriteForm</result>
+		</action> -->
+		
+		<!-- <action name="boardReply" class="board.">
+			<result type="redirect-action">
+				<param name="actionName">boardList</param>
+			</result>
+		</action> -->
+		
+</struts>
+ 
